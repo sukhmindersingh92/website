@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sukhminder Singh – Political Strategist & ORM Leader</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --bg2: #ffffff;
+    --bg3: #f0ede6;
+    --navy: #1a2c4e;
+    --navy-mid: #2d4470;
+    --gold: #b8892a;
+    --gold-light: #d4a843;
+    --gold-dim: rgba(184,137,42,0.12);
+    --text: #1e2a3a;
+    --text-mid: #4a5a74;
+    --text-muted: #7a8fa8;
+    --border: rgba(184,137,42,0.25);
+    --border-soft: rgba(26,44,78,0.1);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.1rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(247,244,239,0.94);
+    backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+  }
+
+  .nav-brand span { color: var(--gold); }
+
+  .nav-pills {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .nav-pills li span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    padding: 0.3rem 0.8rem;
+    border: 1px solid var(--border-soft);
+    background: rgba(26,44,78,0.04);
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, #ffffff 0%, #f7f4ef 55%, #eee9df 100%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(
+      -55deg,
+      transparent,
+      transparent 60px,
+      rgba(184,137,42,0.045) 60px,
+      rgba(184,137,42,0.045) 61px
+    );
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 30%, rgba(26,44,78,0.035) 100%);
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    max-width: 1200px;
+    width: 90%;
+    align-items: center;
+    padding: 7rem 0 5rem;
+  }
+
+  .hero-text { animation: fadeUp 0.9s ease both; }
+
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    width: 36px; height: 1.5px;
+    background: var(--gold);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.2rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name span {
+    display: block;
+    color: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-mid);
+    line-height: 1.85;
+    margin-bottom: 2.5rem;
+    max-width: 470px;
+  }
+
+  
+
+  
+
+  
+  /* ── HERO CARD ── */
+  .hero-card { animation: fadeUp 0.9s 0.18s ease both; }
+
+  .profile-frame {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 500px;
+  }
+
+  .profile-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(145deg, #e8e3d8, #ddd6c8);
+    border: 1px solid var(--border);
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  }
+
+  .profile-initials {
+    position: absolute; inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .initials-circle {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: #fff;
+    box-shadow: 0 12px 40px rgba(26,44,78,0.2);
+  }
+
+  .profile-details { text-align: center; padding: 0 2rem; }
+
+  .profile-details h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .profile-details p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    line-height: 1.65;
+  }
+
+  .corner-tl, .corner-br {
+    position: absolute;
+    width: 48px; height: 48px;
+    border-color: var(--gold);
+    border-style: solid;
+    opacity: 0.5;
+  }
+  .corner-tl { top: -7px; left: -7px; border-width: 2px 0 0 2px; }
+  .corner-br { bottom: -7px; right: -7px; border-width: 0 2px 2px 0; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--navy);
+    padding: 2.5rem 0;
+  }
+
+  .stats-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    padding: 1rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat-item:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    color: var(--gold-light);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.4rem;
+  }
+
+  /* ── SHARED ── */
+  section { padding: 6rem 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.7rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--navy);
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .divider {
+    width: 55px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── ABOUT ── */
+  .about-section { background: var(--bg2); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .tag {
+    padding: 0.35rem 0.9rem;
+    background: var(--gold-dim);
+    border: 1px solid var(--border);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .about-text p {
+    font-size: 1.02rem;
+    color: var(--text-mid);
+    line-height: 1.9;
+    margin-bottom: 1.4rem;
+  }
+
+  /* ── POLITICAL ── */
+  .political-section {
+    background: var(--bg3);
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .political-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    margin-top: 3rem;
+  }
+
+  .pol-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-soft);
+    border-top: 3px solid var(--gold);
+    padding: 2.2rem 1.8rem;
+  }
+
+  .pol-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+
+  .pol-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin-bottom: 0.7rem;
+  }
+
+  .pol-card p {
+    font-size: 0.93rem;
+    color: var(--text-muted);
+    line-height: 1.72;
+  }
+
+  /* ── ORM ── */
+  .orm-section { background: var(--bg2); }
+
+  .orm-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .orm-list {
+    list-style: none;
+    margin-top: 1.8rem;
+  }
+
+  .orm-list li {
+    padding: 1.1rem 0;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.98rem;
+    color: var(--text-mid);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    line-height: 1.6;
+  }
+
+  .orm-list li::before {
+    content: '▶';
+    color: var(--gold);
+    font-size: 0.55rem;
+    margin-top: 0.38rem;
+    flex-shrink: 0;
+  }
+
+  .orm-visual {
+    background: linear-gradient(145deg, #1a2c4e, #2d4470);
+    padding: 3rem 2.5rem;
+    position: relative;
+    clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  }
+
+  .orm-visual::before {
+    content: '"';
+    position: absolute;
+    top: -1rem; left: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 7rem;
+    color: var(--gold-light);
+    opacity: 0.18;
+    line-height: 1;
+  }
+
+  .orm-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: #f0ede6;
+    line-height: 1.65;
+    margin-bottom: 1.8rem;
+  }
+
+  .orm-quote-attr {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  .achievements-section {
+    background: var(--bg3);
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    margin-top: 3rem;
+  }
+
+  .ach-card {
+    background: var(--bg2);
+    border: 1px solid var(--border-soft);
+    border-left: 4px solid var(--gold);
+    padding: 2rem 2.2rem;
+    display: flex;
+    gap: 1.4rem;
+    align-items: flex-start;
+  }
+
+  .ach-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+  .ach-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--navy);
+    margin-bottom: 0.45rem;
+  }
+
+  .ach-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--navy);
+    text-align: center;
+  }
+
+  .contact-section .section-label { color: var(--gold-light); }
+  .contact-section .section-title { color: #ffffff; }
+  .contact-section .section-title em { color: var(--gold-light); }
+
+  .contact-box { max-width: 680px; margin: 0 auto; }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.52);
+    margin-bottom: 3rem;
+    line-height: 1.8;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .contact-item {
+    padding: 1.4rem 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+  }
+
+  .ci-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .ci-val {
+    font-size: 0.92rem;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #111c2e;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.8rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer p { font-size: 0.78rem; color: rgba(255,255,255,0.32); }
+
+  .footer-gold {
+    font-size: 0.78rem;
+    color: var(--gold-light);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-content { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+    .hero-eyebrow { justify-content: center; }
+    .hero-desc { margin: 0 auto 2.5rem; }
+    .hero-card { max-width: 320px; margin: 0 auto; }
+    .about-grid, .orm-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .political-grid { grid-template-columns: 1fr; }
+    .achievements-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .stat-item:nth-child(2) { border-right: none; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-pills { display: none; }
+    footer { flex-direction: column; gap: 0.6rem; text-align: center; }
+  }
+
+  html {
+  scroll-padding-top: 100px;
+}
+
+nav {
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+}
+
+.nav-pills {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.hero-content {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.about-grid,
+.orm-layout,
+.political-grid,
+.achievements-grid,
+.contact-grid,
+.stats-inner {
+  min-width: 0;
+}
+
+img, video, svg, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+body {
+  overflow-x: hidden;
+}
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-brand">Sukhminder <span>Singh</span></div>
+  <ul class="nav-pills">
+    <li><span>Political Strategist</span></li>
+    <li><span>ORM Specialist</span></li>
+    <li><span>PhD Scholar</span></li>
+    <li><span>Chandigarh University</span></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Political Strategist · ORM Leader</p>
+      <h1 class="hero-name">Sukhminder<span>Singh</span></h1>
+      <p class="hero-title">PhD Scholar · Corporate Trainer · Social Media Architect</p>
+      <p class="hero-desc">
+        Driving political narratives, shaping public perception, and engineering digital dominance through expert Online Reputation Management and razor-sharp social media strategy.
+      </p>
+  
+    </div>
+
+    <div class="hero-card">
+      <div class="profile-frame">
+        <div class="profile-bg"></div>
+        <div class="profile-initials">
+          <div class="initials-circle">SS</div>
+          <div class="profile-details">
+            <h3>Sukhminder Singh</h3>
+            <p>Head ORM &amp; ORM Specialist<br>Political SMM Strategist<br>Chandigarh University</p>
+          </div>
+        </div>
+        <div class="corner-tl"></div>
+        <div class="corner-br"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── STATS BAR ── -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">24+</span>
+      <span class="stat-label">Meetings Conducted</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">10</span>
+      <span class="stat-label">Workshops Delivered</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">PhD</span>
+      <span class="stat-label">Scholar & Researcher</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">360°</span>
+      <span class="stat-label">Political ORM Coverage</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-sidebar reveal">
+        <p class="section-label">Who He Is</p>
+        <h2 class="section-title">A Leader Shaped by <em>Purpose</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:0.95rem;color:var(--text-muted);line-height:1.85;margin-bottom:2rem;">
+          With a distinguished career spanning political social media management, corporate training, and hospitality, Sukhminder Singh brings an unmatched depth of expertise to every campaign he leads.
+        </p>
+        <div class="expertise-tags">
+          <span class="tag">Political SMM</span>
+          <span class="tag">ORM</span>
+          <span class="tag">Leadership</span>
+          <span class="tag">Digital Strategy</span>
+          <span class="tag">Corporate Training</span>
+          <span class="tag">PhD Scholar</span>
+          <span class="tag">Brand Building</span>
+          <span class="tag">Crisis Management</span>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p>
+          Sukhminder Singh is a seasoned <strong style="color:var(--navy)">Political Social Media Strategist</strong> and Head ORM Specialist with a proven track record of building powerful digital identities for leaders, political figures, and institutions. His work is defined by one principle: every narrative must be intentional, impactful, and indestructible.
+        </p>
+        <p>
+          As a <strong style="color:var(--navy)">PhD Scholar</strong> and Corporate Trainer at Chandigarh University, Sukhminder seamlessly bridges academic rigour with real-world execution — designing communication strategies that move both masses and media.
+        </p>
+        <p>
+          His 2-day, 10-workshop, 24-meeting sessions stand as testament to his relentless drive. Whether crafting a political campaign narrative or defending a reputation under crisis, Sukhminder delivers results that last.
+        </p>
+        <p>
+          Recognized at the prestigious <strong style="color:var(--navy)">Institutional Building Award</strong> function and celebrated by the Honorable Chancellor Satnam Singh Sandhu, his contributions continue to shape the future of digital political communication in India.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── POLITICAL ── -->
+<section class="political-section" id="political">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 1rem;">
+      <p class="section-label">Core Expertise</p>
+      <h2 class="section-title">Political Strategy & <em>Digital Dominance</em></h2>
+      <div class="divider" style="margin:0 auto 0;"></div>
+    </div>
+    <p class="reveal" style="text-align:center;max-width:620px;margin:0.5rem auto 0;font-size:1rem;color:var(--text-muted);line-height:1.8;">
+      From narrative engineering to voter engagement, Sukhminder Singh delivers full-spectrum political digital strategy — built to win.
+    </p>
+    <div class="political-grid">
+      <div class="pol-card reveal">
+        <div class="pol-icon">🏛️</div>
+        <h3>Political Campaign Strategy</h3>
+        <p>End-to-end social media campaign planning for political figures and parties — from messaging frameworks to platform-specific content that resonates at scale.</p>
+      </div>
+      <div class="pol-card reveal">
+        <div class="pol-icon">📢</div>
+        <h3>Narrative & Public Communication</h3>
+        <p>Shaping political narratives through strategic storytelling, press-ready messaging, and community engagement that builds trust and grows loyal voter bases.</p>
+      </div>
+      <div class="pol-card reveal">
+        <div class="pol-icon">🎯</div>
+        <h3>Targeted Voter Outreach</h3>
+        <p>Precision social media advertising on Facebook and Instagram designed to reach the right constituencies with the right message at the right moment.</p>
+      </div>
+      <div class="pol-card reveal">
+        <div class="pol-icon">🛡️</div>
+        <h3>Political Reputation Defence</h3>
+        <p>Proactive and reactive ORM strategies that protect political leaders from misinformation, opposition attacks, and reputational crises in real time.</p>
+      </div>
+      <div class="pol-card reveal">
+        <div class="pol-icon">📊</div>
+        <h3>Social Media Analytics & Insights</h3>
+        <p>Data-driven decision making using platform analytics to monitor sentiment, track reach, and continuously optimise political ad performance.</p>
+      </div>
+      <div class="pol-card reveal">
+        <div class="pol-icon">🤝</div>
+        <h3>Team & Leadership Training</h3>
+        <p>Building high-performance political communication teams through hands-on workshops, structured training, and real-world campaign simulations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ORM ── -->
+<section class="orm-section" id="orm">
+  <div class="section-inner">
+    <div class="orm-layout">
+      <div class="orm-content reveal">
+        <p class="section-label">Online Reputation Management</p>
+        <h2 class="section-title">Control Your <em>Narrative</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:1rem;color:var(--text-mid);line-height:1.85;margin-bottom:1.5rem;">
+          In politics and public life, perception is power. As Head ORM Specialist, Sukhminder Singh has mastered the art of shaping, protecting, and amplifying digital identities for leaders who cannot afford to leave their reputation to chance.
+        </p>
+        <ul class="orm-list">
+          <li>Comprehensive digital footprint auditing and monitoring</li>
+          <li>Crisis communication and rapid-response reputation defence</li>
+          <li>Search engine reputation management and suppression strategy</li>
+          <li>Social media listening and sentiment tracking</li>
+          <li>Brand-positive content creation and amplification</li>
+          <li>Political leader profile building across all digital platforms</li>
+        </ul>
+      </div>
+      <div class="orm-visual reveal">
+        <p class="orm-quote">
+          "Your reputation online is not what you say — it is what others find when they search for you. We make sure what they find builds your legacy."
+        </p>
+        <p class="orm-quote-attr">— Sukhminder Singh, Head ORM Specialist</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ACHIEVEMENTS ── -->
+<section class="achievements-section" id="achievements">
+  <div class="section-inner">
+    <div class="reveal" style="text-align:center;max-width:580px;margin:0 auto;">
+      <p class="section-label">Recognition & Milestones</p>
+      <h2 class="section-title">Achievements That <em>Speak</em></h2>
+      <div class="divider" style="margin:0 auto;"></div>
+    </div>
+    <div class="achievements-grid">
+      <div class="ach-card reveal">
+        <div class="ach-icon">🏆</div>
+        <div>
+          <h4>Institutional Building Award</h4>
+          <p>Felicitated at the Institutional Building Award Function in recognition of outstanding contribution to digital strategy and institutional reputation management.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🎓</div>
+        <div>
+          <h4>PhD Scholar & Academic Leader</h4>
+          <p>Pursuing doctoral research while actively applying cutting-edge knowledge to real-world political and corporate communication challenges.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">💡</div>
+        <div>
+          <h4>Social Media Strategy Sessions</h4>
+          <p>Hosted highly impactful sessions sharing actionable social media strategy insights with fellow professionals, earning wide recognition for knowledge-sharing excellence.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🤝</div>
+        <div>
+          <h4>Team Builder & Mentor</h4>
+          <p>Recognized and felicitated exceptional team members, demonstrating exemplary leadership, mentorship, and commitment to building high-performing digital teams.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">📋</div>
+        <div>
+          <h4>Power Workshops Facilitator</h4>
+          <p>Delivered 10 intensive workshops across 2 days with 24 meetings — a powerhouse schedule driving collaboration, strategy, and actionable outcomes.</p>
+        </div>
+      </div>
+      <div class="ach-card reveal">
+        <div class="ach-icon">🌐</div>
+        <div>
+          <h4>Chancellor-Recognized Contributor</h4>
+          <p>Acknowledged by Honorable Chancellor Satnam Singh Sandhu for unwavering contribution to Chandigarh University's digital presence and reputation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-box reveal">
+      <p class="section-label">Get In Touch</p>
+      <h2 class="section-title">Ready to Build Your <em>Legacy?</em></h2>
+      <div class="divider" style="margin:0 auto 2rem;"></div>
+      <p class="contact-sub">
+        Whether you are a political leader, institution, or public figure looking to dominate your digital narrative — Sukhminder Singh brings the strategy, expertise, and results you need.
+      </p>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <p class="ci-label">Specialization</p>
+          <p class="ci-val">Political SMM & ORM</p>
+        </div>
+        <div class="contact-item">
+          <p class="ci-label">Institution</p>
+          <p class="ci-val">Chandigarh University</p>
+        </div>
+        <div class="contact-item">
+          <p class="ci-label">Academic</p>
+          <p class="ci-val">PhD Scholar</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>© 2025 Sukhminder Singh. All rights reserved.</p>
+  <p class="footer-gold">Political SMM · ORM · Digital Strategy</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 70);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
